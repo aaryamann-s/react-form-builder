@@ -263,29 +263,7 @@ export default class FormElementsEdit extends React.Component {
           : (<div/>)
         }
 
-        {canHavePageBreakBefore &&
-          <div className="form-group">
-            <label className="control-label">Print Options</label>
-            <div className="custom-control custom-checkbox">
-              <input id="page-break-before-element" className="custom-control-input" type="checkbox" checked={this_checked_page_break} value={true} onChange={this.editElementProp.bind(this, 'pageBreakBefore', 'checked')} />
-              <label className="custom-control-label" htmlFor="page-break-before-element">
-                Page Break Before Element?
-              </label>
-            </div>
-          </div>
-        }
-
-        {canHaveAlternateForm &&
-          <div className="form-group">
-            <label className="control-label">Alternate/Signature Page</label>
-            <div className="custom-control custom-checkbox">
-              <input id="display-on-alternate" className="custom-control-input" type="checkbox" checked={this_checked_alternate_form} value={true} onChange={this.editElementProp.bind(this, 'alternateForm', 'checked')} />
-              <label className="custom-control-label" htmlFor="display-on-alternate">
-                Display on alternate/signature Page?
-              </label>
-            </div>
-          </div>
-        }
+        
 
         { this.props.element.hasOwnProperty('step') &&
           <div className="form-group">
@@ -350,19 +328,7 @@ export default class FormElementsEdit extends React.Component {
             <input id="correctAnswer" type="text" className="form-control" defaultValue={this.props.element.correct} onBlur={this.updateElement.bind(this)} onChange={this.editElementProp.bind(this, 'correct', 'value')} />
           </div>
         }
-        { this.props.element.canPopulateFromApi && this.props.element.hasOwnProperty('options') &&
-          <div className="form-group">
-            <label className="control-label" htmlFor="optionsApiUrl">Populate Options from API</label>
-            <div className="row">
-              <div className="col-sm-6">
-                <input className="form-control" style={{ width: '100%' }} type="text" id="optionsApiUrl" placeholder="http://localhost:8080/api/optionsdata" />
-              </div>
-              <div className="col-sm-6">
-                <button onClick={this.addOptions.bind(this)} className="btn btn-success">Populate</button>
-              </div>
-            </div>
-          </div>
-        }
+       
         { this.props.element.hasOwnProperty('options') &&
           <DynamicOptionList showCorrectColumn={this.props.showCorrectColumn}
             canHaveOptionCorrect={canHaveOptionCorrect}
